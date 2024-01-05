@@ -1,0 +1,141 @@
+// variables
+@tiltAngle: 7deg;
+@opacity: 0.6;
+@screenRed: rgba(108,26,26,@opacity);
+@screenBlack: rgba(0,0,0,@opacity);
+@screenBlue: rgba(26,122,229,@opacity);
+@screenDarkBlue: rgba(33,42,139,@opacity);
+@fadeinTimer: 1.5s;
+@slideinTimer: 0.5s;
+@typingSpeed: 3.5s;
+
+body {
+    margin: 50px 0 0 0;
+    max-width: 95% !important;
+    background-image: url('../img/background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+}
+
+.screen {
+    border-radius: 8px;
+    margin: 10px 0 !important;
+    background-color: @screenBlue;
+    border: solid 3px @screenDarkBlue;
+}
+
+.tilt_div {
+    &.right {
+        transform: perspective(200px) rotate3D(0, 1, 0, -@tiltAngle);
+
+        .twitterPadding {
+            padding: 10px 0;
+        }
+    }
+
+    &.left {
+        transform: perspective(200px) rotate3D(0, 1, 0, @tiltAngle);
+    }
+}
+
+#center_screen {
+    height: 70vh;
+    margin-top: 60px !important;
+}
+
+
+#mech_perf, #pilot_perf {
+    height: 40vh;
+}
+
+#shinsei_links {
+    padding: 10px 0;
+
+    .fa-2xl {
+        font-size: 4em !important;
+        color: white;
+    }
+}
+
+.progress {
+    padding: 0px !important;
+    background-color: rgba(0,0,0,0.35) !important;
+}
+
+.status_bar {
+    margin: 25px 0 !important;
+
+    .text-start {
+        padding-left: 0px;
+    }
+}
+
+/* Transition Effects */
+
+.screens_left {
+  -webkit-animation: fadein @fadeinTimer, slide @slideinTimer forwards; /* Safari, Chrome and Opera > 12.1 */
+  animation: fadein @fadeinTimer, slide @slideinTimer forwards;
+
+  position: relative;
+  left: -500px;
+}
+
+.screen_center {
+    -webkit-animation: fadein @fadeinTimer; /* Safari, Chrome and Opera > 12.1 */
+    animation: fadein @fadeinTimer;
+}
+
+.screens_right {
+  -webkit-animation: fadein @fadeinTimer, slide @slideinTimer forwards; /* Safari, Chrome and Opera > 12.1 */
+  animation: fadein @fadeinTimer, slide @slideinTimer forwards;
+
+  position: relative;
+  left: 500px;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide {
+  100% { left: 0; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+
+/* Typewriter Effect */
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    animation: 
+      typing @typingSpeed steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+  }
